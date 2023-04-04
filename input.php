@@ -47,61 +47,68 @@
         </div>
     </header>
     <section class="banner_main d-flex flex-column">
-        <h1 class="text-center font-weight-bold text-primary">Assessment Form for 10th Students</h1>
+        <h1 class="text-center font-weight-bold text-primary">Assessment Form for Computer Related Field Students</h1>
         <div class="container">
-            <form>
+            <form action="output.php" method="GET">
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="validationDefault01" class="text-success font-weight-bold">First name</label>
-                        <input type="text" name="fname" class="form-control" id="validationDefault01"
+                        <input type="text" name="name" value="Shiv" class="form-control" id="validationDefault01"
                             placeholder="First name" required>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label class="text-success font-weight-bold" for="validationDefault02">Last name</label>
-                        <input type="text" name="lname" class="form-control" id="validationDefault02"
+                        <input type="text" name="surname" value="Kumar" class="form-control" id="validationDefault02"
                             placeholder="Last name" required>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label class="text-success font-weight-bold" for="validationDefault02">Email</label>
-                        <input type="text" name="email" class="form-control" id="validationDefault02"
+                        <input type="text" name="email" value="abc@mail.com" class="form-control" id="validationDefault02"
                             placeholder="Last name" required>
                     </div>
                 </div>
-                <div class="form-row d-flex flex-column mb-3">
-                    <label class="text-success font-weight-bold" for="Select1">Enter Your 9th Percentage Range.</label>
-                    <select name="Select1" id="Select1">
-                        <option selected>Open this select menu</option>
-                        <option value="1">90-100</option>
-                        <option value="2">80-89</option>
-                        <option value="3">70-79</option>
-                        <option value="4">60-69</option>
-                        <option value="5">Lesser than 60</option>
-                    </select>
-                </div>
-                <div class="form-row d-flex flex-column mb-3">
-                    <label class="text-success font-weight-bold" for="Select2">You Like Math?</label>
-                    <select name="Select2" id="Select2">
-                        <option selected>Open this select menu</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
-                    </select>
-                </div>
-                <div class="form-row d-flex flex-column mb-3">
-                    <label class="text-success font-weight-bold" for="Select3">Do You Like Science?</label>
-                    <select name="Select3" id="Select3">
-                        <option selected>Open this select menu</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
-                    </select>
-                </div>
-                <div class="form-row d-flex flex-column mb-3">
-                    <label class="text-success font-weight-bold" for="Select4">Do You Like Geography</label>
-                    <select name="Select4" id="Select4">
-                        <option selected>Open this select menu</option>
-                        <option value="1">Yes</option>
-                        <option value="2">No</option>
-                    </select>
-                </div>
+                <?php
+                $questions=[
+                    "Rate your Database Skills",
+                    "Interested in Computer Architecture?",
+                    "Do you have knowledge of Distributed Computing Systems?",
+                    "Experience Cyber Security?",
+                    "Do you have Networking curiosity?",
+                    "Familiar about Software Development?",
+                    "Rate your Programming Skills",
+                    "Rate your Project Management Skills",
+                    "Any Knowledge of Computer Forensics Fundamentals?",
+                    "What about Technical Communication?",
+                    "Any AI ML Experience?",
+                    "Do you interested in Software Engineering",
+                    "Rate your Business Analysis skills",
+                    "Rate your Communication skills",
+                    "Do you know about Data Science",
+                    "What about your Troubleshooting skills ?",
+                    "Rate your Graphics Designing Skills"
+                ];
+foreach ($questions as $i => $value) {
+    echo '
+    <div class="form-row d-flex flex-column mb-3">
+    <label class="text-success font-weight-bold" for="Select'.($i+1).'">'.$value.'</label>
+    <select name="Select'.($i+1).'" id="Select'.($i+1).'">
+        <option selected value="Not Interested">Not Interested</option>
+        <option value="Poor">Poor</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Average">Average</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Professional">Professional</option>
+    </select>
+</div>
+    
+    
+    
+    ';
+}
+
+
+                ?>
                 <button class="btn btn-primary my-3 float-right px-5" type="submit">Submit</button>
             </form>
         </div>

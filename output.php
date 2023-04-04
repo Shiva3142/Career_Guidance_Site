@@ -46,7 +46,48 @@
             </div>
         </div>
     </header>
-    <section class="banner_main">
+    <section class="banner_main d-flex flex-column">
+        <h1 class="text-center font-weight-bold text-success">Result of Assessment</h1>
+        <h1 class="text-center font-weight-bold text-secondary">Hey <?php
+            echo $_GET['name']." ".$_GET['surname'];
+        ?>! This are the job roles that matched your response</h1>
+        <div class="container d-flex justify-content-evenly flex-wrap">
+            <?php
+        $values = array();
+
+        for ($i = 0; $i < 17; $i++) {
+            $values[$i] = $_GET['Select' . ($i + 1)];
+        }
+        include("./Decision.php");
+        $show_count=0;
+        $result = CosineSimilarity::compareInput($values);
+        foreach ($result as $key => $value) {
+            if (++$show_count>4) {
+                break;
+            }
+            if (round($value*100,2)>0) {
+                echo '
+                    <div class="card m-5" style="width: 25rem;">
+                        <img class="card-img-top" src="https://source.unsplash.com/1600x900/?' . $key . '" alt="Card image cap">
+                        <div class="card-body">
+                            <h1 class="font-weight-bold">' . $key . '</h1>
+                            <p class="card-text">This Career path is matched with <span class="font-weight-bold text-primary">' . round($value*100,2) . '%</span> with your response</p>
+                            <div class="progress">
+                                <div class="progress-bar ' . (round($value*100,2)>50?'bg-success':'bg-primary') . '" role="progressbar" style="width: ' . round($value*100,2) . '%" aria-valuenow="' . round($value*100,2) . '" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    ';
+                
+            }
+        }
+        ?>
+
+</div>
+
+
+
+
     </section>
 
     <footer>
