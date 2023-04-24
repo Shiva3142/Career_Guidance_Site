@@ -3,6 +3,7 @@
 
 
 <?php
+session_start();
     if(isset($_SESSION['email'])){
     }else{
         header("location:login.php");
@@ -69,7 +70,6 @@
                         </style>
                         <div class="menu-area">
                             <?php
-                            session_start();
                             if (isset($_SESSION['email'])) {
                                 echo '
                               <button class="btn-primary">
