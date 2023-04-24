@@ -40,7 +40,47 @@
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <style>
+                            .menu-area {
+                                display: flex;
+                                justify-content: flex-end;
+                                align-items: center;
+                            }
 
+                            .menu-area button {
+                                margin-left: 10px;
+                                padding: 5px 20px;
+                            }
+
+                            .menu-area button a {
+                                background-color: #007bff;
+                                color: white;
+                                background-color: transparent;
+                            }
+                        </style>
+                        <div class="menu-area">
+                            <?php
+                            session_start();
+                            if (isset($_SESSION['email'])) {
+                                echo '
+                              <button class="btn-primary">
+                                 <a href="#">Hello ' . $_SESSION['name'] . '</a>
+                              </button>
+                              <button  class="btn-warning">
+                                 <a href="/logout.php">Logout</a>
+                              </button>
+                           ';
+                            } else {
+                                echo '
+                              <button class="btn-primary">
+                                 <a href="/login.php">Login</a>
+                              </button>
+                              <button  class="btn-warning">
+                                 <a href="/login.php?form_type=register">Register</a>
+                              </button>';
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,12 +103,12 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <label class="text-success font-weight-bold" for="validationDefault02">Email</label>
-                        <input type="text" name="email" value="abc@mail.com" class="form-control" id="validationDefault02"
-                            placeholder="Last name" required>
+                        <input type="text" name="email" value="abc@mail.com" class="form-control"
+                            id="validationDefault02" placeholder="Last name" required>
                     </div>
                 </div>
                 <?php
-                $questions=[
+                $questions = [
                     "Rate your Database Skills",
                     "Interested in Computer Architecture?",
                     "Do you have knowledge of Distributed Computing Systems?",
@@ -87,11 +127,11 @@
                     "What about your Troubleshooting skills ?",
                     "Rate your Graphics Designing Skills"
                 ];
-foreach ($questions as $i => $value) {
-    echo '
+                foreach ($questions as $i => $value) {
+                    echo '
     <div class="form-row d-flex flex-column mb-3">
-    <label class="text-success font-weight-bold" for="Select'.($i+1).'">'.$value.'</label>
-    <select name="Select'.($i+1).'" id="Select'.($i+1).'">
+    <label class="text-success font-weight-bold" for="Select' . ($i + 1) . '">' . $value . '</label>
+    <select name="Select' . ($i + 1) . '" id="Select' . ($i + 1) . '">
         <option selected value="Not Interested">Not Interested</option>
         <option value="Poor">Poor</option>
         <option value="Beginner">Beginner</option>
@@ -105,7 +145,7 @@ foreach ($questions as $i => $value) {
     
     
     ';
-}
+                }
 
 
                 ?>
